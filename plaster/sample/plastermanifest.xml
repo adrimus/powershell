@@ -1,22 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<plasterManifest schemaVersion="1.2" templateType="Project" xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+<plasterManifest schemaVersion="1.2" templateType="Project"
+	xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
 	<metadata>
-        <name>MySample</name>
-        <id>f83b96e0-607a-4ec4-9bbc-4a6deebe194c</id>
-        <version>1.0.0</version>
-        <title>Demo</title>
-        <description>my sample template</description>
-        <author>Art Vanderlay</author>
-        <tags>Module</tags>
+		<name>MySample</name>
+		<id>f83b96e0-607a-4ec4-9bbc-4a6deebe194c</id>
+		<version>1.0.0</version>
+		<title>Demo</title>
+		<description>My Sample Template</description>
+		<author>Art Vanderlay</author>
+		<tags>Module</tags>
 	</metadata>
 	<parameters>
 		<parameter name="ModuleName" type="text" prompt="Enter the name of the module" />
-		<parameter name="Version" type="text" prompt="Enter the version of the module" default="0.1.0" />
+		<parameter name="Version" type="text" prompt="Enter the version of the module"
+			default="0.1.0" />
 		<parameter name="Description" type="text" prompt="Enter a description of this module" />
 		<parameter name="ModuleAuthor" type="user-fullname" prompt="Enter the module author name" />
-		<parameter name="Options" type="multichoice" default="2" store="text" prompt="Select desired options">
-			<choice label="&amp;Pester test support" help="Adds Tests directory and a starter Pester Tests file." value="Pester" />
-			<choice label="&amp;DevContainer support" help="Adds DevContainer support for development in a container." value="DevContainer" />
+		<parameter name="Options" type="multichoice" default="2" store="text"
+			prompt="Select desired options">
+			<choice label="&amp;Pester test support"
+				help="Adds Tests directory and a starter Pester Tests file." value="Pester" />
+			<choice label="&amp;DevContainer support"
+				help="Adds DevContainer support for development in a container."
+				value="DevContainer" />
+			<choice label="&amp;None" help="No options specified." value="None" />
+		</parameter>
+		<parameter name="FunctionFolders" type="multichoice"
+			prompt="Please select folders to include" default="5">
+			<choice label="&amp;Public" help="Adds a public folder to module root" value="Public" />
+			<choice label="&amp;Internal" help="Adds a internal folder to module root"
+				value="Internal" />
+			<choice label="&amp;Classes" help="Adds a classes folder to module root" value="Classes" />
+			<choice label="&amp;Binaries" help="Adds a binaries folder to module root"
+				value="Binaries" />
+			<choice label="&amp;Data" help="Adds a data folder to module root" value="Data" />
 			<choice label="&amp;None" help="No options specified." value="None" />
 		</parameter>
 	</parameters>
@@ -27,8 +44,18 @@
 		<file source="changelog.txt" destination="changelog.txt" />
 		<file source="README.md" destination="README.md" />
 		<file source="license.txt" destination="license.txt" />
-		<newModuleManifest destination="${PLASTER_PARAM_ModuleName}.psd1" moduleVersion="$PLASTER_PARAM_Version" rootModule="${PLASTER_PARAM_ModuleName}.psm1" encoding="UTF8-NoBOM" author="$PLASTER_PARAM_ModuleAuthor" description="$PLASTER_PARAM_Description" openInEditor="true" />
-		<file condition="$PLASTER_PARAM_Options -contains 'DevContainer'" destination=".devcontainer/devcontainer.json" source="devcontainer.json" />
-		<file condition="$PLASTER_PARAM_Options -contains 'Pester'" destination="Tests/Unit" source="Test-Module.Tests.ps1" />
+		<newModuleManifest destination="${PLASTER_PARAM_ModuleName}.psd1"
+			moduleVersion="$PLASTER_PARAM_Version" rootModule="${PLASTER_PARAM_ModuleName}.psm1"
+			encoding="UTF8-NoBOM" author="$PLASTER_PARAM_ModuleAuthor"
+			description="$PLASTER_PARAM_Description" openInEditor="true" />
+		<message condition="$PLASTER_PARAM_Options -contains 'devcontainer'">DevContainer support will be added to the project.</message>
+		<file condition="$PLASTER_PARAM_Options -contains 'DevContainer'"
+			destination=".devcontainer/devcontainer.json" source="devcontainer.json" />
+		<message condition="$PLASTER_PARAM_Options -contains 'pester'">Pester support will be added to the project.</message>
+		<file condition="$PLASTER_PARAM_Options -contains 'Pester'"
+			destination="Tests\${PLASTER_PARAM_ModuleName}.tests.ps1" source="basicTest.ps1" />
+		<requireModule condition="$PLASTER_PARAM_Options -contains 'Pester'" name="Pester"
+			minimumVersion="5.7.1"
+			message="Pester is required for testing support. Please install it from the PowerShell Gallery." />
 	</content>
 </plasterManifest>
