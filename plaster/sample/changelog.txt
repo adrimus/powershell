@@ -1,2 +1,1 @@
-#Changelog for <%=$PLASTER_PARAM_ModuleName%> <%=$PLASTER_PARAM_ModuleName%>
-<%=$PLASTER_PARAM_ModuleName%>
+#Changelog for <%=$PLASTER_PARAM_ModuleName%> created on <%=$PLASTER_Date%>
