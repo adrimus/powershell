@@ -41,9 +41,9 @@
 		<file destination="docs" source="" />
 		<file destination="en-us" source="" />
 		<file source="Module.psm1" destination="${PLASTER_PARAM_ModuleName}.psm1" />
-		<file source="changelog.txt" destination="changelog.txt" />
-		<file source="README.md" destination="README.md" />
-		<file source="license.txt" destination="license.txt" />
+		<templateFile source="changelog.txt" destination="changelog.txt" />
+		<templateFile source="README.md" destination="README.md" />
+		<templateFile source="license.txt" destination="license.txt" />
 		<newModuleManifest destination="${PLASTER_PARAM_ModuleName}.psd1"
 			moduleVersion="$PLASTER_PARAM_Version" rootModule="${PLASTER_PARAM_ModuleName}.psm1"
 			encoding="UTF8-NoBOM" author="$PLASTER_PARAM_ModuleAuthor"

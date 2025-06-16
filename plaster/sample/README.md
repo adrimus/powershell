@@ -2,3 +2,4 @@
 
 
  *last updated <%=$PLASTER_Date%>*
+ <%=$PLASTER_PARAM_ModuleName%>
