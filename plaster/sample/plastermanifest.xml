@@ -41,6 +41,8 @@
 		<file destination="docs" source="" />
 		<file destination="en-us" source="" />
 		<file source="Module.psm1" destination="${PLASTER_PARAM_ModuleName}.psm1" />
+		<file condition="$PLASTER_PARAM_FunctionFolders -contains 'Public'"
+			destination="Public" source="" />
 		<templateFile source="changelog.txt" destination="changelog.txt" />
 		<templateFile source="README.md" destination="README.md" />
 		<templateFile source="license.txt" destination="license.txt" />
@@ -54,6 +56,8 @@
 		<message condition="$PLASTER_PARAM_Options -contains 'pester'">Pester support will be added to the project.</message>
 		<templateFile condition="$PLASTER_PARAM_Options -contains 'Pester'"
 			destination="Tests\${PLASTER_PARAM_ModuleName}.tests.ps1" source="test\Module.T.ps1" />
+		<file condition="$PLASTER_PARAM_FunctionFolders -contains 'Public' -and $PLASTER_PARAM_Options -contains 'Pester'"
+			destination="Tests\Public" source="" />
 		<requireModule condition="$PLASTER_PARAM_Options -contains 'Pester'" name="Pester"
 			minimumVersion="5.7.1"
 			message="Pester is required for testing support. Please install it from the PowerShell Gallery." />
