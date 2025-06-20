@@ -52,8 +52,8 @@
 		<file condition="$PLASTER_PARAM_Options -contains 'DevContainer'"
 			destination=".devcontainer/devcontainer.json" source="devcontainer.json" />
 		<message condition="$PLASTER_PARAM_Options -contains 'pester'">Pester support will be added to the project.</message>
-		<file condition="$PLASTER_PARAM_Options -contains 'Pester'"
-			destination="Tests\${PLASTER_PARAM_ModuleName}.tests.ps1" source="basicTest.ps1" />
+		<templateFile condition="$PLASTER_PARAM_Options -contains 'Pester'"
+			destination="Tests\${PLASTER_PARAM_ModuleName}.tests.ps1" source="test\Module.T.ps1" />
 		<requireModule condition="$PLASTER_PARAM_Options -contains 'Pester'" name="Pester"
 			minimumVersion="5.7.1"
 			message="Pester is required for testing support. Please install it from the PowerShell Gallery." />
