@@ -61,5 +61,6 @@
 		<requireModule condition="$PLASTER_PARAM_Options -contains 'Pester'" name="Pester"
 			minimumVersion="5.7.1"
 			message="Pester is required for testing support. Please install it from the PowerShell Gallery." />
+		<message>Your new PowerShell module project '$PLASTER_PARAM_ModuleName' has been created at $PLASTER_DestinationPath</message>
 	</content>
 </plasterManifest>
