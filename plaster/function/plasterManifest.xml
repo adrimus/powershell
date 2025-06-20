@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<plasterManifest
+  schemaVersion="1.2"
+  templateType="Item"
+  xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1">
+  <metadata>
+    <name>myFunction</name>
+    <id>19721788-a7c6-40da-b0d0-baf7ab67c5ab</id>
+    <version>1.0.0</version>
+    <title>myFunction</title>
+    <description>Function scaffolding</description>
+    <author>Art Vanderlay</author>
+    <tags></tags>
+  </metadata>
+  <parameters></parameters>
+  <content></content>
+</plasterManifest>
