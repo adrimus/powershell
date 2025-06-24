@@ -51,11 +51,13 @@
 			encoding="UTF8-NoBOM" author="$PLASTER_PARAM_ModuleAuthor"
 			description="$PLASTER_PARAM_Description" openInEditor="true" />
 		<message condition="$PLASTER_PARAM_Options -contains 'devcontainer'">DevContainer support will be added to the project.</message>
-		<file condition="$PLASTER_PARAM_Options -contains 'DevContainer'"
-			destination=".devcontainer/devcontainer.json" source="devcontainer.json" />
 		<message condition="$PLASTER_PARAM_Options -contains 'pester'">Pester support will be added to the project.</message>
 		<templateFile condition="$PLASTER_PARAM_Options -contains 'Pester'"
 			destination="Tests\${PLASTER_PARAM_ModuleName}.tests.ps1" source="test\Module.T.ps1" />
+		<file condition="$PLASTER_PARAM_Options -contains 'DevContainer'"
+			destination=".devcontainer\devcontainer.json" source="devcontainer\devcontainer.json" />
+		<file condition="$PLASTER_PARAM_Options -contains 'DevContainer'"
+			destination=".devcontainer\Dockerfile" source="devcontainer\Dockerfile" />
 		<file condition="$PLASTER_PARAM_FunctionFolders -contains 'Public' -and $PLASTER_PARAM_Options -contains 'Pester'"
 			destination="Tests\Public" source="" />
 		<requireModule condition="$PLASTER_PARAM_Options -contains 'Pester'" name="Pester"
