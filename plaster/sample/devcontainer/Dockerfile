@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell:latest
+FROM mcr.microsoft.com/powershell:lts-debian-12
 
 # Install git for version control
 RUN apt-get update && \
