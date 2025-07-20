@@ -12,6 +12,34 @@
     <author>Art Vanderlay</author>
     <tags></tags>
   </metadata>
-  <parameters></parameters>
-  <content></content>
+  <parameters>
+
+    <parameter name='Name' type='text' prompt='Enter the name of your function.' />
+
+    <parameter name='help' type='choice' prompt='Do you need comment based help?'>
+      <choice label="&amp;Yes" help="Add comment based help outline" value="Yes" />
+      <choice label="&amp;No" help="Does not add comment based help" value="No" />
+    </parameter>
+
+    <parameter name="options" type="multichoice" prompt="Please select options to include"
+      default="2">
+      <choice label="&amp;ShouldProcess"
+        help="Adds SupportsShouldProcess" value="ShouldProcess" />
+      <choice label="Confirm&amp;Impact"
+        help="Adds ConfirmImpact" value="ConfirmImpact" />
+      <choice label="&amp;ComputerName"
+        help="Adds ComputerName parameter" value="ComputerName" />
+      <choice label="&amp;None"
+        help="No options" value="none" />
+    </parameter>
+
+  </parameters>
+  <content>
+
+    <message>⚡ PS> Scaffolding your PowerShell function $PLASTER_PARAM_Name</message>
+    <templateFile source='function.ps1' destination='${PLASTER_PARAM_Name}.ps1' />
+    <message>Your function, '$PLASTER_PARAM_Name', has been saved to
+      '$PLASTER_DestinationPath\$PLASTER_PARAM_Name.ps1'</message>
+    <message>Your options where: $PLASTER_PARAM_options</message>
+  </content>
 </plasterManifest>
